@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Special Invitation for Elam ✨</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-gray-900 to-purple-900 text-white min-h-screen flex flex-col">
+
+  <!-- Start Container -->
+  <div id="start-container" class="flex-grow flex items-center justify-center transition-opacity duration-500">
+    <button onclick="showMessage()" class="bg-gradient-to-r from-pink-500 to-purple-500 text-white font-bold px-8 py-4 rounded-full shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300">
+      Click to Begin Your Adventure!
+    </button>
+  </div>
+
+  <!-- Message Container -->
+  <div id="message-container" class="flex-grow flex flex-col items-center justify-center text-center hidden transition-opacity duration-500">
+    <h1 class="text-4xl md:text-6xl mb-6 font-script" style="font-family: 'Great Vibes', cursive; color: #F472B6;">For My Star, Elam ✨</h1>
+    <p class="mb-8 text-lg md:text-xl max-w-2xl px-4">Elam, you are the light in my universe, the star that guides me. I love you endlessly. 💫 Get ready for a surprise!</p>
+    <button onclick="startQuestions()" class="bg-gradient-to-r from-pink-500 to-purple-500 text-white font-bold px-8 py-4 rounded-full shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300">
+      Continue the Journey
+    </button>
+  </div>
+
+  <!-- Question Container -->
+  <div id="question-container" class="flex-grow flex flex-col items-center justify-center hidden transition-opacity duration-500">
+    <p id="question-text" class="text-2xl md:text-3xl mb-8 px-4 text-center max-w-2xl"></p>
+    <div class="flex space-x-4">
+      <button onclick="nextQuestion(true)" class="bg-green-500 text-white font-bold px-8 py-4 rounded-full shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300">Yes!</button>
+      <button onclick="nextQuestion(false)" class="bg-red-500 text-white font-bold px-8 py-4 rounded-full shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300">No</button>
+    </div>
+  </div>
+
+  <!-- Invitation Container -->
+  <div id="invite-container" class="flex-grow flex items-center justify-center hidden transition-opacity duration-500">
+    <div class="bg-gray-800 p-8 rounded-xl shadow-2xl max-w-md w-full mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl mb-6 font-bold text-pink-500">Congratulations, My Love! 🎉</h2>
+      <p class="text-lg mb-4">Your special adventure awaits...</p>
+      <div class="mb-4">
+        <p><strong class="text-pink-300">Date:</strong> 15 March 2025</p>
+        <p><strong class="text-pink-300">Time:</strong> 18:30</p>
+        <p><strong class="text-pink-300">Location:</strong> 21 Firwood Ave, Hazelwood, Pretoria, 0081</p>
+        <p><strong class="text-pink-300">Bolt Pickup:</strong> Arriving at 18:00</p>
+      </div>
+      <p class="text-sm italic text-gray-400">Get ready for an unforgettable evening! ✨</p>
+    </div>
+  </div>
+
+  <script>
+    const questions = [
+      "Do you trust me, Elam?",
+      "Are you ready for a magical surprise, my love?",
+      "Would you like to embark on a delightful adventure with me?",
+      "Do you believe in the enchantment of mystery dates?"
+    ];
+    let currentQuestion = 0;
+
+    function showMessage() {
+      const startContainer = document.getElementById('start-container');
+      const messageContainer = document.getElementById('message-container');
+
+      startContainer.classList.add('hidden');
+      messageContainer.classList.remove('hidden');
+      messageContainer.classList.add('flex'); // Ensure it's flex
+    }
+
+    function startQuestions() {
+      const messageContainer = document.getElementById('message-container');
+      const questionContainer = document.getElementById('question-container');
+
+      messageContainer.classList.add('hidden');
+      questionContainer.classList.remove('hidden');
+      questionContainer.classList.add('flex'); // Ensure it's flex
+      document.getElementById('question-text').innerText = questions[currentQuestion];
+    }
+
+    function nextQuestion(answer) {
+      if (!answer) {
+        alert("Oh no, Elam! You have to say yes to continue!");
+        return;
+      }
+      currentQuestion++;
+      if (currentQuestion < questions.length) {
+        document.getElementById('question-text').innerText = questions[currentQuestion];
+      } else {
+        const questionContainer = document.getElementById('question-container');
+        const inviteContainer = document.getElementById('invite-container');
+
+        questionContainer.classList.add('hidden');
+        inviteContainer.classList.remove('hidden');
+        inviteContainer.classList.add('flex'); // Ensure it's flex
+      }
+    }
+  </script>
+</body>
+</html>
